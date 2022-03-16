@@ -49,3 +49,25 @@ Kubernetes API Protection using Rate Limiting Demo
 
 ### 3. Create Ingress Manifest
 
+- Create ingress manifest (ingress-nginx.yaml) and then apply
+
+``` kubectl apply -f ingress-nginx.yaml ```
+
+### 4. Test the Ingress Configuration
+
+- To see the traffic is routed correctly to the API
+
+``` kubectl get service --namespace nginx ```
+
+- Launch temporary busybox
+
+``` kubectl run -ti --rm=true busybox --image=busybox ```
+
+- Issue request to Nginx Ingress Controller with hostname "api.example.com"
+
+``` wget --header="Host: api.example.com" -qO- main-nginx-ingress.nginx ```
+
+- Issue request to Nginx Ingress Controller with hostname "example.com" to simulate web browser
+
+``` wget --header="Host: example.com" --header="User-Agent: Mozilla" -qO- main-nginx-ingress.nginx ```
+
