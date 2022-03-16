@@ -84,3 +84,31 @@ Kubernetes API Protection using Rate Limiting Demo
 - Create and Install Locust (locust.yaml)
 
 ``` kubectl apply -f locust.yaml ```
+
+### 6. Simulate Traffic with Locust
+
+> Host: http://main-nginx-ingress.nginx
+
+### 7. Deploy 2 New Ingress Controllers
+
+- First delete the current ingress deployment
+
+``` kubectl delete -f ingress-nginx.yaml ```
+
+- Create 2 new namespaces
+
+``` kubectl create namespace nginx-web ```
+
+``` kubectl create namespace nginx-api ```
+
+### 8. Install Web Namespace Ingress Controller
+
+```
+    helm install web nginx-stable/nginx-ingress --set controller.ingressClass=nginx-web \
+  --set controller.service.type=NodePort \
+  --set controller.service.httpPort.nodePort=30020 \
+  --namespace nginx-web
+```
+
+- Create and apply web manifest (ingress-web.yaml)
+
