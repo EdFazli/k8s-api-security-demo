@@ -23,6 +23,14 @@ Kubernetes API Protection using Rate Limiting Demo
 
 ``` minikube start ```
 
+- Create App and API deployment (deployment.yaml) and then apply
+
+``` kubectl apply -f deployment.yaml ```
+
+- Verify the deployment
+
+``` kubectl get pods ```
+
 ### 2. Install Nginx Ingress Controller
 
 - Create new namespace name nginx
