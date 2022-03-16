@@ -112,3 +112,18 @@ Kubernetes API Protection using Rate Limiting Demo
 
 - Create and apply web manifest (ingress-web.yaml)
 
+``` kubectl apply -f ingress-web.yaml ```
+
+### 9. Install API Namespace Ingress Controller
+
+```
+    helm install api nginx-stable/nginx-ingress --set controller.ingressClass=nginx-api \
+  --set controller.service.type=NodePort \
+  --set controller.service.httpPort.nodePort=30030 \
+  --set controller.enablePreviewPolicies=true \
+  --namespace nginx-api
+```
+
+- Create and apply web manifest (ingress-api.yaml)
+
+``` kubectl apply -f ingress-api.yaml ```
