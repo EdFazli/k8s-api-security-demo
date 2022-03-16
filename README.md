@@ -79,3 +79,8 @@ Kubernetes API Protection using Rate Limiting Demo
 
 ``` wget --header="Host: example.com" --header="User-Agent: Mozilla" -qO- main-nginx-ingress.nginx ```
 
+### 5. Install Locust
+
+- Create and Install Locust (locust.yaml)
+
+``` kubectl apply -f locust.yaml ```
