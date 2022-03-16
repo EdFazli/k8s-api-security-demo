@@ -141,4 +141,3 @@ Kubernetes API Protection using Rate Limiting Demo
 ### 12. Simulate Traffic with Locust
 
 > Host: http://main-nginx-ingress.nginx
-
