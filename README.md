@@ -127,3 +127,18 @@ Kubernetes API Protection using Rate Limiting Demo
 - Create and apply web manifest (ingress-api.yaml)
 
 ``` kubectl apply -f ingress-api.yaml ```
+
+### 10. Test Rate Limiting
+
+- Modify locust script (locust-modified.yaml) and then apply
+
+``` kubectl apply -f locust-modified.yaml ```
+
+### 11. Reload New Config Map
+
+``` kubectl delete pod `kubectl get pods | grep locust | awk {'print $1'}` ```
+
+### 12. Simulate Traffic with Locust
+
+> Host: http://main-nginx-ingress.nginx
+
